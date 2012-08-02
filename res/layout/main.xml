@@ -8,7 +8,7 @@
 
     <com.markupartist.android.widget.ActionBar
         android:id="@+id/actionbar"
-        style="@style/AnotherActionBar" />
+        style="@style/ActionBar" />
 
     <com.astuetz.viewpagertabs.ViewPagerTabs
         android:id="@+id/tabs"
