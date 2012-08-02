@@ -1,0 +1,3 @@
+[submodule "jni/android_external_dropbear"]
+	path = jni/android_external_dropbear
+	url = git://github.com/CyanogenMod/android_external_dropbear.git
