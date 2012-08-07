@@ -84,10 +84,8 @@ public class ServerStarter extends AsyncTask<Void, String, Boolean> {
 		String pidFile = ServerUtils.getLocalDir(mContext) + "/pid";
 
 		String command = "/system/xbin/dropbear";
-		command = command.concat(" -A -N " + login);
-		command = command.concat(" -C " + passwd);
+		command = command.concat(" -Y " + passwd);
 		command = command.concat(" -r " + hostRsa + " -d " + hostDss);
-		command = command.concat(" -R " + authorizedKeys);
 		if (login.equals("root")) {
 			command = command.concat(" -U " + ID_ROOT + " -G " + ID_ROOT);
 		}
