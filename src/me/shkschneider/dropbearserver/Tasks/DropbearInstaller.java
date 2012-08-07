@@ -62,11 +62,12 @@ public class DropbearInstaller extends AsyncTask<Void, String, Boolean> {
 		Log.i(TAG, "DropbearInstaller: doInBackground()");
 		
 		int step = 0;
-		int steps = 14;
+		int steps = 16;
 
 		String dropbear = ServerUtils.getLocalDir(mContext) + "/dropbear";
 		String dropbearkey = ServerUtils.getLocalDir(mContext) + "/dropbearkey";
 		String scp = ServerUtils.getLocalDir(mContext) + "/scp";
+		String sftp_server = ServerUtils.getLocalDir(mContext) + "/sftp-server";
 		String banner = ServerUtils.getLocalDir(mContext) + "/banner";
 		String host_rsa = ServerUtils.getLocalDir(mContext) + "/host_rsa";
 		String host_dss = ServerUtils.getLocalDir(mContext) + "/host_dss";
@@ -101,6 +102,16 @@ public class DropbearInstaller extends AsyncTask<Void, String, Boolean> {
 		publishProgress("" + step++, "" + steps, "SCP binary");
 		if (ShellUtils.chmod(scp, "755") == false) {
 			return falseWithError(scp);
+		}
+
+		// sftp-server
+		publishProgress("" + step++, "" + steps, "SFTP-server binary");
+		if (Utils.copyRawFile(mContext, R.raw.sftp_server, sftp_server) == false) {
+			return falseWithError(sftp_server);
+		}
+		publishProgress("" + step++, "" + steps, "SFTP-server binary");
+		if (ShellUtils.chmod(sftp_server, "755") == false) {
+			return falseWithError(sftp_server);
 		}
 		
 		// banner
